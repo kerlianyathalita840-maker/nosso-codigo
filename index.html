@@ -25,11 +25,10 @@ height:300px;
 object-fit:cover;
 border-radius:15px;
 margin-top:20px;
-cursor:pointer;
 }
 
 button{
-margin-top:40px;
+margin-top:20px;
 padding:12px 25px;
 border:none;
 border-radius:10px;
@@ -37,6 +36,9 @@ background:#22c55e;
 color:white;
 font-size:18px;
 cursor:pointer;
+display:block;
+margin-left:auto;
+margin-right:auto;
 }
 
 button:hover{
@@ -68,16 +70,15 @@ transform:translateY(110vh);
 <body>
 
 <h1> Eu Te Amo ❤️</h1>
-
 <h2>22/03/2025</h2>
 
-<a href="pasta-do-xuxu/">
 <img id="foto" src="pasta-do-xuxu/foto1.png">
-</a>
 
-<br>
+<!-- BOTÃO DA MÚSICA -->
+<button onclick="tocarMusica()">🎵 Tocar Música</button>
 
-<button onclick="tocarMusica()">▶️ Tocar música 💌</button>
+<!-- BOTÃO DA PASTA -->
+<button onclick="abrirPasta()">📂 Ver nossas fotos</button>
 
 <div id="contador"></div>
 
@@ -90,9 +91,16 @@ transform:translateY(110vh);
 function tocarMusica(){
 let musica = document.getElementById("musica");
 
-musica.play().catch(()=>{
-alert("Clique novamente para tocar 🎵");
+musica.currentTime = 0;
+musica.play().then(()=>{
+console.log("tocando");
+}).catch(()=>{
+alert("Clique novamente no botão para liberar o som 🎵");
 });
+}
+
+function abrirPasta(){
+window.location.href = "pasta-do-xuxu/";
 }
 
 let fotos=[
@@ -108,7 +116,7 @@ let fotos=[
 "pasta-do-xuxu/foto10.png",
 "pasta-do-xuxu/foto11.png",
 "pasta-do-xuxu/foto12.png",
-"pasta-do-xuxu/foto13.png"  
+"pasta-do-xuxu/foto13.png"
 ];
 
 let i=0;
@@ -125,8 +133,8 @@ let agora=new Date();
 let diff=agora-inicio;
 let dias=Math.floor(diff/(1000*60*60*24));
 
-document.getElementById("contador").innerText=
-"Juntos há "+dias+" dias ❤️";
+document.getElementById("contador").innerText =
+"Juntos há " + dias + " dias ❤️";
 },1000);
 
 function criarCoracao(){
