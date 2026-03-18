@@ -49,18 +49,23 @@ button:hover {
 
 <h2 id="frase">Carregando...</h2>
 
-<img src="fotos/foto1.png">
+<img id="foto" src="fotos/foto1.png">
 
 <br>
 
 <button onclick="mudarMensagem()">Clique aqui 💌</button>
 
-<audio id="musica" autoplay loop>
+<audio autoplay loop>
   <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-let fotos = ["https://imgur.com/a/JWxhUq1"];
+let fotos = [
+"fotos/foto1.png",
+"fotos/foto2.png",
+"fotos/foto3.png"
+];
+
 let i = 0;
 
 setInterval(() => {
