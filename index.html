@@ -67,7 +67,7 @@ transform:translateY(110vh);
 </style>
 </head>
 
-<body>
+<body onclick="tocarMusica()">
 
 <h1> Eu Te Amo ❤️</h1>
 <h2>22/03/2025</h2>
@@ -75,14 +75,14 @@ transform:translateY(110vh);
 <img id="foto" src="pasta-do-xuxu/foto1.png">
 
 <!-- BOTÃO DA MÚSICA -->
-<button onclick="tocarmusica()">🎵 Tocar Música</button>
+<button onclick="tocarMusica()">🎵 Tocar Música</button>
 
 <!-- BOTÃO DA PASTA -->
 <button onclick="abrirPasta()">📂 Ver nossas fotos</button>
 
 <div id="contador"></div>
 
-<audio id="musica">
+<audio id="musica" preload="auto">
   <source src="audio.mp3" type="audio/mpeg">
 </audio>
 
@@ -91,11 +91,11 @@ transform:translateY(110vh);
 function tocarMusica(){
 let musica = document.getElementById("musica");
 
+musica.load();
 musica.currentTime = 0;
-musica.play().then(()=>{
-console.log("tocando");
-}).catch(()=>{
-alert("Clique novamente no botão para liberar o som 🎵");
+
+musica.play().catch(()=>{
+alert("Clique novamente para ativar o som 🎵");
 });
 }
 
