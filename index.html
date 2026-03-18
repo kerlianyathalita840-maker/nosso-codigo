@@ -15,6 +15,10 @@ text-align:center;
 overflow:hidden;
 }
 
+h1{
+margin-top:20px;
+}
+
 img{
 width:300px;
 height:300px;
@@ -52,7 +56,9 @@ animation:cair 5s linear infinite;
 }
 
 @keyframes cair{
-to{transform:translateY(110vh);}
+to{
+transform:translateY(110vh);
+}
 }
 
 </style>
@@ -62,15 +68,19 @@ to{transform:translateY(110vh);}
 
 <h1>Nosso Código ❤️</h1>
 
-<h2 id="frase"></h2>
+<h2>22/03/2025</h2>
 
 <a href="pasta-do-xuxu/">
+
+<img id="foto" src="pasta-do-xuxu/foto1.png">
+
+<br>
+
 <button>Clique aqui 💌</button>
+
 </a>
 
 <div id="contador"></div>
-
-<img id="foto" src="pasta-do-xuxu/foto1.png">
 
 <audio id="musica" loop>
 <source src="musica.mp3" type="audio/mpeg">
@@ -85,35 +95,53 @@ document.getElementById("musica").play();
 let fotos=[
 "pasta-do-xuxu/foto1.png",
 "pasta-do-xuxu/foto2.png",
-"pasta-do-xuxu/foto3.png"
+"pasta-do-xuxu/foto3.png",
+"pasta-do-xuxu/foto4.png"
 ];
 
 let i=0;
 
 setInterval(()=>{
+
 i=(i+1)%fotos.length;
+
 document.getElementById("foto").src=fotos[i];
+
 },3000);
 
 let inicio=new Date("2025-03-22");
 
 setInterval(()=>{
+
 let agora=new Date();
+
 let diff=agora-inicio;
+
 let dias=Math.floor(diff/(1000*60*60*24));
+
 document.getElementById("contador").innerText=
 "Juntos há "+dias+" dias ❤️";
+
 },1000);
 
 function criarCoracao(){
+
 let heart=document.createElement("div");
+
 heart.classList.add("heart");
+
 heart.innerHTML="❤️";
+
 heart.style.left=Math.random()*100+"vw";
+
 heart.style.fontSize=(10+Math.random()*20)+"px";
+
 document.body.appendChild(heart);
 
-setTimeout(()=>{heart.remove();},5000);
+setTimeout(()=>{
+heart.remove();
+},5000);
+
 }
 
 setInterval(criarCoracao,300);
