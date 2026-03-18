@@ -28,7 +28,7 @@ margin-top:20px;
 }
 
 button{
-margin-top:40px; /* espaço maior */
+margin-top:40px;
 padding:12px 25px;
 border:none;
 border-radius:10px;
@@ -78,14 +78,20 @@ transform:translateY(110vh);
 
 <div id="contador"></div>
 
-<audio id="musica">
-  <source src="musica.mp3" type="audio/mpeg">
+<audio id="musica" controls>
+  <source src="./musica.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 
 function tocarMusica(){
-document.getElementById("musica").play();
+let musica = document.getElementById("musica");
+
+musica.play().then(()=>{
+console.log("tocando");
+}).catch((erro)=>{
+alert("Clique novamente para tocar a música 🎵");
+});
 }
 
 let fotos=[
