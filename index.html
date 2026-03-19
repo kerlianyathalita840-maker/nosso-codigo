@@ -15,8 +15,6 @@ text-align:center;
 overflow:hidden;
 }
 
-/* DEDICATÓRIA */
-
 #dedicatoria{
 position:fixed;
 left:60px;
@@ -31,8 +29,6 @@ padding:20px;
 border-radius:15px;
 box-shadow:0 0 15px rgba(0,0,0,0.3);
 }
-
-/* RESTO DO SITE */
 
 h1{
 margin-top:20px;
@@ -88,7 +84,6 @@ transform:translateY(110vh);
 
 <body>
 
-<!-- DEDICATÓRIA -->
 <div id="dedicatoria">
 
 ❤️Conhecer voce foi de uma sorte tão grande,
@@ -120,16 +115,20 @@ const musica = document.getElementById("musica");
 const botao = document.getElementById("btnMusica");
 
 botao.addEventListener("click", () => {
+
 musica.play();
+
+localStorage.setItem("musicaTempo", musica.currentTime);
 localStorage.setItem("musica","on");
+
 });
 
-if(localStorage.getItem("musica") === "on"){
-musica.play();
-}
-
 function abrirPasta(){
+
+localStorage.setItem("musicaTempo", musica.currentTime);
+
 window.location.href="pasta-do-xuxu/index.html";
+
 }
 
 let fotos=[
@@ -151,14 +150,19 @@ let fotos=[
 let i=0;
 
 setInterval(()=>{
+
 i=(i+1)%fotos.length;
+
 document.getElementById("foto").src=fotos[i];
+
 },3000);
 
 let inicio=new Date("2025-03-22");
 
 setInterval(()=>{
+
 let agora=new Date();
+
 let diff=agora-inicio;
 
 let dias=Math.floor(diff/(1000*60*60*24));
