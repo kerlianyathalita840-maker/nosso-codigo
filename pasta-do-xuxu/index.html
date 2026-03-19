@@ -14,10 +14,6 @@ text-align:center;
 margin:0;
 }
 
-h1{
-margin:20px;
-}
-
 .galeria{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
@@ -75,7 +71,7 @@ cursor:pointer;
 
 <button onclick="voltar()">⬅ Voltar</button>
 
-<audio id="musica" loop>
+<audio id="musica" autoplay muted loop>
 <source src="../audio.mp3" type="audio/mpeg">
 </audio>
 
@@ -105,9 +101,7 @@ cursor:pointer;
 
 const musica=document.getElementById("musica");
 
-document.addEventListener("click",()=>{
-
-if(localStorage.getItem("musica")==="on"){
+window.addEventListener("load",()=>{
 
 let tempo=localStorage.getItem("musicaTempo");
 
@@ -117,7 +111,9 @@ musica.currentTime=tempo;
 
 musica.play();
 
-}
+setTimeout(()=>{
+musica.muted=false;
+},1000);
 
 });
 
