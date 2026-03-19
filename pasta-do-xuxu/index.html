@@ -55,12 +55,29 @@ max-height:90%;
 border-radius:10px;
 }
 
+button{
+margin:20px;
+padding:10px 20px;
+border:none;
+border-radius:10px;
+background:#22c55e;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
 </style>
 </head>
 
 <body>
 
 <h1>Pasta do Xuxu ❤️</h1>
+
+<button onclick="voltar()">⬅ Voltar</button>
+
+<audio id="musica" loop>
+<source src="../audio.mp3" type="audio/mpeg">
+</audio>
 
 <div class="galeria">
 
@@ -85,6 +102,16 @@ border-radius:10px;
 </div>
 
 <script>
+
+const musica = document.getElementById("musica");
+
+if(localStorage.getItem("musica") === "on"){
+musica.play();
+}
+
+function voltar(){
+window.location.href="../index.html";
+}
 
 function abrir(img){
 document.getElementById("modal").style.display="flex";
