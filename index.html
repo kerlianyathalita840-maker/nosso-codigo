@@ -69,7 +69,7 @@ transform:translateY(110vh);
 
 <body>
 
-<h1> Eu Te Amo ❤️</h1>
+<h1>Eu Te Amo ❤️</h1>
 <h2>22/03/2025</h2>
 
 <img id="foto" src="pasta-do-xuxu/foto1.png">
@@ -80,19 +80,26 @@ transform:translateY(110vh);
 
 <div id="contador"></div>
 
-<audio id="musica" src="audio.mp3"></audio>
+<audio id="musica" loop>
+<source src="audio.mp3" type="audio/mpeg">
+</audio>
 
 <script>
 
-const botao = document.getElementById("btnMusica");
 const musica = document.getElementById("musica");
+const botao = document.getElementById("btnMusica");
 
 botao.addEventListener("click", () => {
-    musica.play();
+musica.play();
+localStorage.setItem("musica","on");
 });
 
+if(localStorage.getItem("musica") === "on"){
+musica.play();
+}
+
 function abrirPasta(){
-window.location.href = "pasta-do-xuxu/";
+window.location.href="pasta-do-xuxu/index.html";
 }
 
 let fotos=[
@@ -114,36 +121,48 @@ let fotos=[
 let i=0;
 
 setInterval(()=>{
+
 i=(i+1)%fotos.length;
 document.getElementById("foto").src=fotos[i];
+
 },3000);
 
 let inicio=new Date("2025-03-22");
 
 setInterval(()=>{
+
 let agora=new Date();
 let diff=agora-inicio;
+
 let dias=Math.floor(diff/(1000*60*60*24));
 
-document.getElementById("contador").innerText =
-"Juntos há " + dias + " dias ❤️";
+document.getElementById("contador").innerText=
+"Juntos há "+dias+" dias ❤️";
+
 },1000);
 
 function criarCoracao(){
+
 let heart=document.createElement("div");
 heart.classList.add("heart");
+
 heart.innerHTML="❤️";
+
 heart.style.left=Math.random()*100+"vw";
+
 heart.style.fontSize=(10+Math.random()*20)+"px";
 
 document.body.appendChild(heart);
 
 setTimeout(()=>{
+
 heart.remove();
+
 },5000);
+
 }
 
-setInterval(criarCoracao,300);
+setInterval(criarCoracao,600);
 
 </script>
 
