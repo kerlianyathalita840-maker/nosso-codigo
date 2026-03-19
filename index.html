@@ -23,7 +23,6 @@ width:260px;
 text-align:left;
 font-size:18px;
 line-height:1.6;
-color:white;
 background:rgba(0,0,0,0.25);
 padding:20px;
 border-radius:15px;
@@ -61,7 +60,6 @@ font-size:20px;
 .heart{
 position:fixed;
 top:-10px;
-color:red;
 font-size:20px;
 animation:cair 5s linear infinite;
 }
@@ -78,11 +76,13 @@ transform:translateY(110vh);
 <body>
 
 <div id="dedicatoria">
+
 ❤️Conhecer voce foi de uma sorte tão grande,
 que nem se eu jogasse na mega da virada eu teria uma probabilidade tao pequena e tao maravilhosa,
 como a que tive quando conheci voce.
-Obrigada pelo primeiro ano de vida que compartilhamos lado a lado.  
+Obrigada pelo primeiro ano juntos.
 Eu te amo muito ❤️
+
 </div>
 
 <h1>Eu Te Amo ❤️</h1>
@@ -96,7 +96,7 @@ Eu te amo muito ❤️
 
 <div id="contador"></div>
 
-<audio id="musica" autoplay muted loop>
+<audio id="musica" loop>
 <source src="audio.mp3" type="audio/mpeg">
 </audio>
 
@@ -104,7 +104,7 @@ Eu te amo muito ❤️
 
 const musica=document.getElementById("musica");
 
-window.addEventListener("load",()=>{
+function iniciarMusica(){
 
 let tempo=localStorage.getItem("musicaTempo");
 
@@ -112,13 +112,13 @@ if(tempo){
 musica.currentTime=tempo;
 }
 
-musica.play();
+musica.play().catch(()=>{});
 
-setTimeout(()=>{
-musica.muted=false;
-},1000);
+document.removeEventListener("click",iniciarMusica);
 
-});
+}
+
+document.addEventListener("click",iniciarMusica);
 
 function abrirPasta(){
 
@@ -186,7 +186,9 @@ heart.style.animationDuration=(3+Math.random()*3)+"s";
 document.body.appendChild(heart);
 
 setTimeout(()=>{
+
 heart.remove();
+
 },6000);
 
 }
